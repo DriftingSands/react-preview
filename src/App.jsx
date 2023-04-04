@@ -22,6 +22,7 @@ function App() {
 		topMostEditableElement.current = nodeList.find(
 			(node) => node?.dataset?.editablePath || node.attributes.path
 		);
+    console.log("\x1b[31m ~ topMostEditableElement.current:", topMostEditableElement.current.dataset.editablePath)
 		if (!topMostEditableElement.current) {
 			return;
 		}

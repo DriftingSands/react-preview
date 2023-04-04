@@ -1,8 +1,8 @@
 import editable from "./Editable"
 
-function Teaser({teaser, editableRef}) {
+function Teaser({teaser, editableRef, editablePath}) {
   return (
-    <div class="teaser" path={teaser?._path} ref={editableRef} >
+    <div class="teaser" path={teaser?._path} ref={editableRef} data-editable-path={editablePath} >
 		<div class="image">
 			<img
 				src={"https://author-p54352-e854610.adobeaemcloud.com" + teaser?.image._path}
