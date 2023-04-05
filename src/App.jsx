@@ -22,12 +22,11 @@ function App() {
 		topMostEditableElement.current = nodeList.find(
 			(node) => node?.dataset?.editablePath || node.attributes.path
 		);
-    console.log("\x1b[31m ~ topMostEditableElement.current:", topMostEditableElement.current.dataset.editablePath)
 		if (!topMostEditableElement.current) {
 			return;
 		}
 
-		const boundingBox = topMostEditableElement.current.getBoundingClientRect();
+		const boundingBox = topMostEditableElement?.current?.getBoundingClientRect();
 		window.parent.postMessage(
 			{
 				type: "editableBoundingRect",
@@ -89,11 +88,14 @@ function App() {
 
   useEffect(() => {
     getData()
-		if (searchParams.get('editMode') === 'false') {return}
-		window.addEventListener("message", dataHandler);
-		window.addEventListener("click", handleClick);
-		window.addEventListener("scroll", handleScroll);
-		window.addEventListener("resize", handleResize);
+		if (searchParams.get('editMode') === 'HOC') {
+			window.addEventListener("message", dataHandler);
+			window.addEventListener("click", handleClick);
+			window.addEventListener("scroll", handleScroll);
+			window.addEventListener("resize", handleResize);
+		} else if (searchParams.get('editMode') !== 'false') {
+			window.cfEditorDataFunction = setData
+		}
 
 		return () => {
 			window.removeEventListener("message", dataHandler);
@@ -101,7 +103,7 @@ function App() {
 			window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("resize", handleResize);
 		};
-  }, [])
+  }, [handleClick, handleScroll, handleResize, dataHandler,])
   
 
   return (

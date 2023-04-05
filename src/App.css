@@ -63,3 +63,12 @@ main {
 	border-radius: 100px;
 	text-decoration: none;
 }
+
+@media (width < 800px) {
+	.teaser {
+		flex-direction: column;
+	}
+	.teaser .image, .teaser .textContent {
+		width: 100%;
+	}
+}

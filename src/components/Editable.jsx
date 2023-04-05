@@ -3,7 +3,7 @@ import { useEffect,  useRef } from "react";
 function editable(WrappedComponent) {
   const searchParams = new URLSearchParams(window.location.search);
   return props => {
-    if (searchParams.get("editMode") === "false") {
+    if (searchParams.get("editMode") !== "HOC") {
       return <WrappedComponent {...props} />;
     }
 
