@@ -48,7 +48,13 @@ function App() {
     window.parent.postMessage(
       {
         type: "editablePath",
-        payload: [topMostEditableElement.current?.dataset?.editablePath],
+        payload: {
+          path: [topMostEditableElement?.current?.dataset?.editablePath],
+          content: {
+            textContent: topMostEditableElement?.current.textContent,
+            src: topMostEditableElement?.current.src || topMostEditableElement.current.querySelector("img").src
+          }
+        }
       },
       searchParams.get("iFrameHost")
     );

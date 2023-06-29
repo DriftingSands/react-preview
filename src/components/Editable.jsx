@@ -26,7 +26,6 @@ function editable(WrappedComponent) {
           window.removeEventListener("message", scrollTo);
         };
     }, [path, props.path]);
-    console.log("\x1b[31m ~ path:", path)
     return <WrappedComponent {...props} editablePath={path} editableRef={editableRef} />;
   };
 }
