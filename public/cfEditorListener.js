@@ -78,7 +78,7 @@ const dataHandler = (event) => {
 const scrollMessageHandler = (event) => {
 	const matchingPathElement = document.querySelector(`[data-editable-path='${event.data.path}']`);
 	const box = matchingPathElement.getBoundingClientRect();
-	if (box.top <= 0 && box.bottom >= window.innerHeight) {
+	if (box.top >= 0 || box.bottom <= window.innerHeight) {
 		return;
 	}
 	window.scrollBy({ top: box.top, left: 0, behavior: "smooth" });
