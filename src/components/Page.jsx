@@ -9,7 +9,7 @@ export default function Page({ data, onlyExternalData, fetchComplete }) {
   if (data?.header || data?.listContent?.length || data?.teaser) {
     return (
       <>
-        <h1>
+        <h1 data-editable-path={data._path} data-inner-cf-path={".header"} >
           <ReactLogo />
           {data?.header?.toUpperCase()}
         </h1>
@@ -17,7 +17,7 @@ export default function Page({ data, onlyExternalData, fetchComplete }) {
           <ul>
             {data.listContent.map((item, index) => {
               return (
-                <li key={index}>
+                <li key={index} data-editable-path={data._path} data-inner-cf-path={`.listContent.${index}.plaintext`} data-cf-add-new={true}>
                   <p>{item.plaintext}</p>
                 </li>
               );
