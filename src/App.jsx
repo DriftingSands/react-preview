@@ -109,7 +109,7 @@ function App() {
       window.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleResize);
     } else if (searchParams.get("editMode") !== "false") {
-      window.cfEditorDataFunction = setData;
+      window.cfEditorDataFunction = (event) => setData(event.data.payload.data);
     }
 
     return () => {
